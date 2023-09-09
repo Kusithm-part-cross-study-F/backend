@@ -2,11 +2,14 @@ package com.kusithm.partstudybackend.domain.article.dto.response;
 
 import com.kusithm.partstudybackend.domain.article.entity.Article;
 import com.kusithm.partstudybackend.domain.tag.dto.TagDto;
+import com.kusithm.partstudybackend.domain.tag.entity.Tag;
+import com.kusithm.partstudybackend.domain.tag.entity.TagType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,19 +21,22 @@ public class ArticleResponse {
     String title;
     String description;
     String body;
-    List<TagDto> tagList;
+    List<String> tagList;
     LocalDateTime createdAt;
     LocalDateTime updatedAt;
 
     public static ArticleResponse of(Article article) {
+        List<String> tags = new ArrayList<>();
+        for (Tag tag : article.getTags()) {
+            tags.add(tag.getType().toString());
+        }
+
         return new ArticleResponse(
                 article.getId(),
                 article.getTitle(),
                 article.getDescription(),
                 article.getBody(),
-                article.getTags().stream()
-                        .map(TagDto::new)
-                        .collect(Collectors.toList()),
+                tags,
                 article.getCreatedDate(),
                 article.getModifiedDate());
     }
