@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class HealthCheckApiController {
     @RequestMapping("/")
     public String crossStudyF() {
-        return "PartCross-Study-Team F";
+        return "PartCross-Study-Team F good d";
     }
 }
