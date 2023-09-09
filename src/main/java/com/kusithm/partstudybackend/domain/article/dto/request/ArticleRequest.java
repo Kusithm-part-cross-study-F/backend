@@ -1,9 +1,6 @@
 package com.kusithm.partstudybackend.domain.article.dto.request;
 
-import com.kusithm.partstudybackend.domain.article.dto.response.ArticleResponse;
 import com.kusithm.partstudybackend.domain.article.entity.Article;
-import com.kusithm.partstudybackend.domain.tag.dto.TagDto;
-import com.kusithm.partstudybackend.domain.tag.entity.Tag;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,14 +11,14 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class PostArticleRequest {
+public class ArticleRequest {
     String title;
     String description;
     String body;
-    List<TagDto> tagList;
+    List<String> tagList;
 
-    public static PostArticleRequest of(String title, String description, String body, List<TagDto> tagList) {
-        return new PostArticleRequest(title, description, body, tagList);
+    public static ArticleRequest of(String title, String description, String body, List<String> tagList) {
+        return new ArticleRequest(title, description, body, tagList);
     }
 
     @Builder

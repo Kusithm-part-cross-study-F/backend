@@ -1,15 +1,14 @@
 package com.kusithm.partstudybackend.domain.article.controller;
 
-import com.kusithm.partstudybackend.domain.article.dto.request.PostArticleRequest;
+import com.kusithm.partstudybackend.domain.article.dto.request.ArticleRequest;
 import com.kusithm.partstudybackend.domain.article.dto.response.ArticleResponse;
-import com.kusithm.partstudybackend.domain.article.dto.response.GetArticlesResponse;
 import com.kusithm.partstudybackend.domain.article.service.ArticleService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import net.bytebuddy.asm.Advice;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.websocket.server.PathParam;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -17,10 +16,14 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class ArticleController {
     private final ArticleService articleService;
-    @PostMapping
-    public ResponseEntity<ArticleResponse> createArticle(@RequestBody PostArticleRequest request) {
-        log.warn(request.getTitle());
 
+    @PostMapping
+    public ResponseEntity<ArticleResponse> createArticle(@RequestBody ArticleRequest request) {
         return ResponseEntity.ok(articleService.createArticle(request));
+    }
+
+    @PutMapping("/{articleId}")
+    public ResponseEntity<ArticleResponse> updateArticle(@PathVariable("articleId") Long articleId, @RequestBody ArticleRequest request) {
+        return ResponseEntity.ok(articleService.updateArticle(articleId, request));
     }
 }

@@ -1,6 +1,8 @@
 package com.kusithm.partstudybackend.domain.article.entity;
 
+import com.kusithm.partstudybackend.domain.article.dto.request.ArticleRequest;
 import com.kusithm.partstudybackend.domain.tag.entity.Tag;
+import com.kusithm.partstudybackend.domain.tag.entity.TagType;
 import com.kusithm.partstudybackend.global.common.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -40,7 +42,20 @@ public class Article extends BaseTimeEntity {
         this.body = body;
     }
 
-    public void setTags(List<Tag> tags){
+    public void setTags(List<Tag> tags) {
         this.tags = tags;
+    }
+
+    public void update(ArticleRequest request) {
+        List<String> tagStrigns = request.getTagList();
+        List<Tag> tags = new ArrayList<>();
+        for (String tagString : tagStrigns) {
+            TagType type = TagType.valueOf(tagString);
+            tags.add(new Tag(type));
+        }
+        this.tags = tags;
+        this.body = request.getBody();
+        this.title = request.getTitle();
+        this.description = request.getDescription();
     }
 }

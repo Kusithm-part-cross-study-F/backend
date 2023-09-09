@@ -1,6 +1,5 @@
 package com.kusithm.partstudybackend.domain.article.dto.response;
 
-import com.kusithm.partstudybackend.domain.article.dto.request.PostArticleRequest;
 import com.kusithm.partstudybackend.domain.article.entity.Article;
 import com.kusithm.partstudybackend.domain.tag.dto.TagDto;
 import lombok.AllArgsConstructor;
