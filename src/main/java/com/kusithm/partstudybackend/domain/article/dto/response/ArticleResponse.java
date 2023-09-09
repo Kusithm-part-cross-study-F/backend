@@ -1,9 +1,7 @@
 package com.kusithm.partstudybackend.domain.article.dto.response;
 
 import com.kusithm.partstudybackend.domain.article.entity.Article;
-import com.kusithm.partstudybackend.domain.tag.dto.TagDto;
 import com.kusithm.partstudybackend.domain.tag.entity.Tag;
-import com.kusithm.partstudybackend.domain.tag.entity.TagType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,7 +9,6 @@ import lombok.Getter;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Builder
 @AllArgsConstructor

@@ -26,4 +26,8 @@ public class Tag extends BaseTimeEntity {
     public Tag(TagType type){
         this.type = type;
     }
+    public void setArticle(Article article, TagType tagType){
+        this.article = article;
+        this.type = tagType;
+    }
 }
