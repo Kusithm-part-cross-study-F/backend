@@ -58,4 +58,9 @@ public class ArticleService {
         Article article = articleRepository.findById(id).get();
         return ArticleResponse.of(article);
     }
+    public ArticleResponse deleteOne(Long id) {
+        Article article = articleRepository.findById(id).get();
+        articleRepository.delete(article);
+        return ArticleResponse.of(article);
+    }
 }
