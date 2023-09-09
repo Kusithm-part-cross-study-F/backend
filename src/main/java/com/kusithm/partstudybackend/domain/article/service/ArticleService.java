@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -43,6 +44,18 @@ public class ArticleService {
     public ArticleResponse updateArticle(Long id, ArticleRequest request) {
         Article article = articleRepository.findById(id).get();
         article.update(request);
+        return ArticleResponse.of(article);
+    }
+
+    public List<ArticleResponse> findArticles() {
+        List<Article> articles = articleRepository.findAll();
+        return articles.stream().
+                map(ArticleResponse::of)
+                .collect(Collectors.toList());
+    }
+
+    public ArticleResponse getOne(Long id) {
+        Article article = articleRepository.findById(id).get();
         return ArticleResponse.of(article);
     }
 }
