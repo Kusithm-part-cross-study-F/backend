@@ -1,4 +1,12 @@
 package com.kusithm.partstudybackend.global.common;
 
-public class HealthCheckApi {
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HealthCheckApiController {
+    @RequestMapping("/")
+    public String crossStudyF() {
+        return "PartCross-Study-Team F";
+    }
 }
