@@ -37,7 +37,7 @@ public class ArticleController {
         return ResponseEntity.ok(articleService.getOne(articleId));
     }
 
-    @GetMapping("/{articleId}")
+    @DeleteMapping("/{articleId}")
     public ResponseEntity<ArticleResponse> deleteOne(@PathVariable("articleId") Long articleId) {
         return ResponseEntity.ok(articleService.deleteOne(articleId));
     }
